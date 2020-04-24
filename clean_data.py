@@ -94,11 +94,11 @@ def players_guardians_list():
             guardian_1 = [player['guardians'][0]]
             guardian_2 = [player['guardians'][1]]
             lst_guardians = lst_guardians + guardian_1 + guardian_2
-        print(f'\nThe list of Player Guardians.\n')
-        print(', '.join(lst_guardians))
-        print(f'\nThe list of Player names.\n')
-        print(', '.join(lst_players))
-        print('')
+    print(f'\nThe list of Player Guardians.\n')
+    print(', '.join(lst_guardians))
+    print(f'\nThe list of Player names.\n')
+    print(', '.join(lst_players))
+    print('')
 
 
 def display_team_stats(team):
