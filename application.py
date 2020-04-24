@@ -1,20 +1,47 @@
 import copy
 import constants
 import clean_data
-#1.  make a "deep copy" of constants.PLAYERS
-#2.  Loop through the copy.
-#    a. If the player['experience'] is equal to "YES" set player['experience'] equal to True. Otherwise set it to False
-#    b. Split the height string. Assign player['height'] the element at the 0 index of the resulting array and converted to an int
 
-# Had to make a deepcopy of PLAYERS, and TEAMS as they are constants and i
-#cant/shoudldn't change them.
+print(f'''\n\n\t____________________________________________
+        |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+        |~~~~~~~~BASKETBALL TEAM STAT TOOL~~~~~~~~~|''')
+
+
 
 def start_program():
+    #Start up of the program.
+    off_set = f'\b'* 34
+    while True:
+        try:
+            prompt_1 = int(input(f"""\t|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+        |~~~~~~~~~~~~~~ Main Menu ~~~~~~~~~~~~~~~~~|
+        |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+        |~~~~~~~~~~~~~~~ OPTIONS ~~~~~~~~~~~~~~~~~~|
+        |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+        |--1) Display Team Stats ------------------|
+        |--2) Quit---------------------------------|
+        |------------------------------------------|
+        |--Please enter the number of the option---|
+        |--you would like to execute.--------------|
+        |------->   <------------------------------|{off_set}"""))
+            if prompt_1 > 2 or prompt_1 <1:
+                print(f'''\t|------------------------------------------|
+        |--You failed to enter a valid number -----|
+        |---Please try again ----------------------|''')
+            elif prompt_1 == 1:
+                clean_data.pick_team()
+            elif prompt_1 == 2:
+                print(f'''\t|------------------------------------------|
+        |--Thank you, come again soon.-------------|
+        |------------------------------------------|''')
+                break
+        except ValueError or NameError:
+                print(f'''\t|------------------------------------------|
+        |--You failed to enter a valid number -----|
+        |---Please try again ----------------------|''')
+                continue
 
-    print(clean_data.players)
-    print(clean_data.experienced)
-    print(clean_data.not_experienced)
-    print(clean_data.teams)
+
 
 
 
