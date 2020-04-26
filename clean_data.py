@@ -1,5 +1,5 @@
-import copy
 import constants
+import copy
 import os
 import sys
 players = copy.deepcopy(constants.PLAYERS)
@@ -76,6 +76,8 @@ def avg_height(team):
 
 
 def players_guardians_list():
+    # creats a list of player guardians, and a seperate list for players names
+    # and coerces them into a sting joined by a commma space.
     lst_guardians = []
     lst_players = []
     for player in players:
@@ -100,7 +102,8 @@ def clear():
 
 
 def display_team_stats(team):
-
+# displays team stats, and gives the players the ability to input for
+# a specifiic team, and specific data
     count = 0
     num_players = len(team)
 
@@ -183,6 +186,7 @@ def display_team_stats(team):
         |------------------------------------------|""")
             continue
 def print_boxed(string):
+    # use to print boxed where applicable.
     length = len(string)
     needed_length = len('|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|') - 6
     diff = needed_length - length
