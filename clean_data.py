@@ -1,6 +1,7 @@
 import copy
 import constants
-
+import os
+import sys
 players = copy.deepcopy(constants.PLAYERS)
 teams = copy.deepcopy(constants.TEAMS)
 # Had to make a deepcopy of PLAYERS, and TEAMS as they are constants and i
@@ -63,14 +64,7 @@ def dict_team(team):
         index += 1
     return team_dict
 
-    #Running the all the functions to sort the teams and coerce them into dict{}
-sort_exp_players(team_1), sort_exp_players(team_2)
-sort_exp_players(team_3)
-sort_not_exp_players(team_1), sort_not_exp_players(team_2)
-sort_not_exp_players(team_3)
-panthers = dict_team(team_1)
-bandits = dict_team(team_2)
-warriors = dict_team(team_3)
+
 
 
 def avg_height(team):
@@ -99,6 +93,10 @@ def players_guardians_list():
     print(f'\nThe list of Player names.\n')
     print(', '.join(lst_players))
     print('')
+
+def clear():
+        """Clears the screen"""
+        os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def display_team_stats(team):
@@ -136,16 +134,17 @@ def display_team_stats(team):
         |-- Enter players number (1-6) ------------|
         |--7) to view list of guardians -----------|
         |--8) to return to team selection ---------|
+        |--9) to exit program ---------------------|
         |------->   <------------------------------|{off_set}"""))
             if prompt_3 == 8008:
                 players_guardians_list()
 
-            elif prompt_3 < 1 or prompt_3 > 8:
+            elif prompt_3 < 1 or prompt_3 > 9:
                 print(f"""\t|------------------------------------------|
         |-Sorry you failed to enter a valid option-|
         |--please try again------------------------|
         |------------------------------------------|""")
-            elif prompt_3 >= 7 and prompt_3 < 9:
+            elif prompt_3 >= 7 and prompt_3 < 10:
 
                 if prompt_3 == 7:
                     lst_guardians = []
@@ -168,6 +167,11 @@ def display_team_stats(team):
                 elif prompt_3 == 8:
                     break
 
+                elif prompt_3 == 9:
+                    print(f'''\t|------------------------------------------|
+        |--Thank you, come again soon.-------------|
+        |------------------------------------------|''')
+                    sys.exit()
             else:
                 player_bio(team[int(prompt_3)])
                 continue
@@ -210,6 +214,15 @@ def player_bio(player):
 
 def pick_team():
 #directs the user to correct teams dictionarie
+#Running the all the functions to sort the teams and coerce them into dict{}
+    sort_exp_players(team_1), sort_exp_players(team_2)
+    sort_exp_players(team_3)
+    sort_not_exp_players(team_1), sort_not_exp_players(team_2)
+    sort_not_exp_players(team_3)
+    panthers = dict_team(team_1)
+    bandits = dict_team(team_2)
+    warriors = dict_team(team_3)
+
     while True:
         choice = input(f'''\t|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         |~~~Please choose a team~~~~~~~~~~~~~~~~~~~|
@@ -220,21 +233,24 @@ def pick_team():
         |------------------------------------------|
         |------->   <------------------------------|{off_set}''')
 
-
+        clear()
         if choice == '1':
-            print(f"""\t|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+            print(f"""\n\n\t____________________________________________
+        |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         |~~~~~~~~~~~~~~~ *PANTHERS* ~~~~~~~~~~~~~~~|
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|""")
             display_team_stats(panthers)
 
         elif choice == '2':
-            print(f"""\t|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+            print(f"""\n\n\t____________________________________________
+        |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         |~~~~~~~~~~~~~~~ *BANDITS* ~~~~~~~~~~~~~~~~|
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|""")
             display_team_stats(bandits)
 
         elif choice =='3':
-            print(f"""\t|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+            print(f"""\n\n\t____________________________________________
+        |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         |~~~~~~~~~~~~~~~ *WARRIORS* ~~~~~~~~~~~~~~~|
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|""")
             display_team_stats(warriors)
